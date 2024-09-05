@@ -1,6 +1,8 @@
 # CSST106-CSA-LORIN
 
 
+
+
 https://github.com/user-attachments/assets/3986c96f-62e6-4c56-ace5-a636cc89bd32
 
 
@@ -38,6 +40,49 @@ Example: Canny Edge Detection helps identify tumor edges or blood vessels, provi
 - Variability in Image Quality: Image processing standardizes images, ensuring consistent and accurate analysis despite equipment differences or patient movement.
 - 
 - Complexity of Medical Data: Segmentation and edge detection highlight relevant structures, simplifying the analysis of complex medical images and increasing diagnostic accuracy.
+
+### Image Processing Implementation
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Milleys/CSST106-CS4A-LORIN/blob/f0af91f479efa348ac481b5bb544aedd174ced5f/4A_LORIN_MP1.ipynb)
+```python
+import cv2
+import numpy as np
+from matplotlib import pyplot as plt
+
+# Load the MRI image
+image = cv2.imread('mri_scan.jpeg', cv2.IMREAD_GRAYSCALE)
+
+# Apply Gaussian Blur to reduce noise
+blurred_image = cv2.GaussianBlur(image, (5, 5), 0)
+
+# Perform simple thresholding
+_, segmented_image = cv2.threshold(blurred_image, 127, 255, cv2.THRESH_BINARY)
+
+# Apply Canny Edge Detection
+edges = cv2.Canny(segmented_image, 50, 150)
+
+# Display results using matplotlib
+plt.figure(figsize=(12, 6))
+
+plt.subplot(1, 3, 1)
+plt.title('Original Image')
+plt.imshow(image, cmap='gray')
+plt.axis('off')
+
+plt.subplot(1, 3, 2)
+plt.title('Segmented Image')
+plt.imshow(segmented_image, cmap='gray')
+plt.axis('off')
+
+plt.subplot(1, 3, 3)
+plt.title('Detected Edges')
+plt.imshow(edges, cmap='gray')
+plt.axis('off')
+
+plt.show()
+
+```
+![output](https://github.com/user-attachments/assets/e1982231-ea60-4198-8e08-99ccfac77e33)
+
 
 ### Conclusion
 
