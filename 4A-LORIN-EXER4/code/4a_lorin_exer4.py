@@ -119,3 +119,11 @@ for ax in axs:
     ax.axis('off')  # Turn off axis for a cleaner look
 
 plt.show()
+
+"""# **Downloads**"""
+
+!wget http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_mobilenet_v1_fpn_640x640_coco17_tpu-8.tar.gz
+!tar -xvf ssd_mobilenet_v1_fpn_640x640_coco17_tpu-8.tar.gz
+
+!wget https://pjreddie.com/media/files/yolov3.weights
+!wget https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3.cfg
